@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head'); %>
+<body class="bg-gray-900">
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex justify-center">
+      <div class="w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-200">Edit Document (ID: <%= document._id %>)</h1>
+        <form action="/api/collections/<%= collectionName %>/update" method="POST" class="bg-gray-800 shadow-md rounded-lg p-6">
+          <input type="hidden" name="id" value="<%= document._id %>">
+          <% for (const prop in document) { %>
+            <div class="mb-4">
+              <label for="<%= prop %>" class="block text-sm font-medium text-gray-300 capitalize"><%= prop %></label>
+              <input type="text" id="<%= prop %>" name="<%= prop %>" value="<%= document[prop] %>"
+                     class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-gray-200 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+          <% } %>
+          <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">Update Document</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

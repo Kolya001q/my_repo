@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "667b0da3d896086bea4cd158"
+  },
+  "login": "dgfshgfdjhg",
+  "password": "jfghh"
+},
+{
+  "_id": {
+    "$oid": "667b10521951e68b14b65446"
+  },
+  "login": "admin",
+  "password": "admin"
+},
+{
+  "_id": {
+    "$oid": "667b113c073b6c4c693fef5c"
+  },
+  "login": "admin",
+  "password": "admin"
+},
+{
+  "_id": {
+    "$oid": "667b11ad5281b011e4ab964c"
+  },
+  "login": "root",
+  "password": "admin"
+}]

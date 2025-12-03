@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head'); %>
+<body class="bg-gray-900 min-h-screen flex flex-col relative">
+  <!-- Particle Background -->
+  <div id="particles-js" class="fixed inset-0 z-0"></div>
+  <!-- Main Content -->
+  <div class="flex-grow container mx-auto px-4 py-8 z-10">
+    <div class="bg-gray-800/80 shadow-lg rounded-lg p-6">
+      <a href="/api/collections" class="inline-block mb-8 px-6 py-2 border-2 border-gray-600 text-gray-200 rounded-full hover:bg-gray-600 hover:text-white transition">Повернутися назад</a>
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-200">Облік зброї в підрозділі: <%= title.toUpperCase() %></h1>
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-1 overflow-x-auto">
+          <table class="w-full border-2 border-gray-600 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="px-4 py-2 text-left text-gray-300">Звання</th>
+                <th class="px-4 py-2 text-left text-gray-300">Ім'я</th>
+                <th class="px-4 py-2 text-left text-gray-300">Прізвище</th>
+                <th class="px-4 py-2 text-left text-gray-300">Гвинтівка</th>
+                <th class="px-4 py-2 text-left text-gray-300">Номер гвинтівки</th>
+                <th class="px-4 py-2 text-left text-gray-300">Пістолет</th>
+                <th class="px-4 py-2 text-left text-gray-300">Номер пістолету</th>
+                <th class="px-4 py-2 text-left text-gray-300">Дії</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (const document of documents) { %>
+                <tr class="border-t border-gray-700">
+                  <td class="px-4 py-2 text-gray-400"><%= document.rank %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.name %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.lastName %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.assaultRifle %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.serialNumberAssaultRifle %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.pistol %></td>
+                  <td class="px-4 py-2 text-gray-400"><%= document.serialNumberPistol %></td>
+                  <td class="px-4 py-2"></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="md:w-1/4">
+          <form action="/api/collections/<%= title %>/export" method="GET">
+            <button class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Зберегти у xlsx</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="w-full py-4 border-t-2 border-gray-600 text-center bg-gray-800 z-10">
+    <h4 class="text-lg font-semibold text-gray-200">©Всі права захищені</h4>
+    <p class="text-gray-400 mt-2">Розробник:  сержант Дрига М.В.</p>
+  </footer>
+  <!-- Particles.js Script and Configuration -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: ['#00f0ff', '#00ff88', '#ffffff'] },
+        shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+        line_linked: { enable: false },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: 'none',
+          random: true,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: { enable: false, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
+        modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>

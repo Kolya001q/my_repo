@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "667e6afc861e8275ff1c239a"
+  },
+  "rank": "солдат",
+  "name": "aVOKADO",
+  "lastname": "Жупкін",
+  "duty": "2024-06-11",
+  "bigDuty": "2024-06-21"
+},
+{
+  "_id": {
+    "$oid": "667e6b6cd21effaef4eaaa3d"
+  },
+  "rank": "солдат",
+  "name": "aVOKADO",
+  "lastname": "Васильевич",
+  "duty": "2024-06-14",
+  "bigDuty": "2024-06-26"
+}]
