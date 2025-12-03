@@ -4,7 +4,7 @@ import MongoStore from 'connect-mongo';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import * as path from 'path';
-import router from './router.js';
+import router from './Router.js';
 import config from './config.js';
 
 const __filename = fileURLToPath(import.meta.url);
