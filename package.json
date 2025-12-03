@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "seed": "node ./scripts/seed.js"
+    "seed": "node ./scripts/seed.js",
+    "export-db": "node ./scripts/export.js",
+    "import-db": "node ./scripts/import_exported.js",
+    "vercel-build": "echo build step - none"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
     "fs": "^0.0.1-security",
     "mongoose": "^8.4.3",
     "path": "^0.12.7",
+    "serverless-http": "^3.2.0",
     "url": "^0.11.3",
     "xlsx": "^0.18.5"
   },
