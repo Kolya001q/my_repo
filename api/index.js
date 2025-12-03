@@ -9,15 +9,25 @@ let conn = null;
 
 // Ensure mongoose connection is available for the lambda
 async function ensureConn() {
-  if (!conn) {
-    conn = await mongoose.connect(DB_URL);
+  if (conn) return;
+  conn = await mongoose.connect(DB_URL);
+}
+
+const lambda = serverless(app);
+
+// Wrapper ensures DB connection before delegating to serverless handler
+export default async function (req, res) {
+  try {
+    await ensureConn();
+  } catch (err) {
+    console.error('Mongo connection error', err);
+    res.statusCode = 500;
+    res.end('Database connection error');
+    return;
   }
+  return lambda(req, res);
 }
 
-export default async function handler(req, res) {
-  await ensureConn();
-  // serverless-http expects to export a function like this; but Vercel will use the default export below
-}
-
-export const vite = serverless(app);
-export const handler = serverless(app);
+export const handler = async (req, res) => {
+  return (await import('./index.js')).default(req, res);
+};
